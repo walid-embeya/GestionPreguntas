@@ -20,8 +20,8 @@ public class UsuarioListaAssembler implements RepresentationModelAssembler<Usuar
 	public UsuarioListaModel toModel(Usuario entity) {
 		UsuarioListaModel model = new UsuarioListaModel();
 		model.setNombre(entity.getNombre());
-		model.setUsername(entity.getUsername());
-		model.setContraseña(entity.getContraseña());
+		//model.setUsername(entity.getUsername());
+		//model.setContraseña(entity.getContraseña());
 		model.add(
 				linkTo(methodOn(UsuarioController.class).one(entity.getId())).withSelfRel()
 				);
@@ -34,7 +34,7 @@ public class UsuarioListaAssembler implements RepresentationModelAssembler<Usuar
 				lista.stream().map(this::toModel).collect(Collectors.toList())
 				);
 		collection.add(
-				linkTo(methodOn(UsuarioController.class).all()).withRel("pedidos")
+				linkTo(methodOn(UsuarioController.class).all()).withRel("usuarios")
 				);
 		
 		return collection;

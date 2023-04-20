@@ -3,11 +3,14 @@ package es.mdef.gestionpreguntas.REST;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
+import es.mdef.gestionpreguntas.entidades.Usuario.Role;
+
 @Relation(itemRelation="usuario")
 public class UsuarioModel extends RepresentationModel<UsuarioModel> {
 	private String nombre;
 	private String username;
 	private String contraseña;
+	private Role role;	
 
 	public String getNombre() {
 		return nombre;
@@ -29,10 +32,16 @@ public class UsuarioModel extends RepresentationModel<UsuarioModel> {
 		this.contraseña = contraseña;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 	@Override
 	public String toString() {
-		return "UsuarioModel [nombre=" + nombre + ", username=" + username + ", contraseña="
-				+ contraseña + "]";
+		return "UsuarioModel [nombre=" + nombre + ", username=" + username + ", role=" + role + "]";
 	}
 
 }

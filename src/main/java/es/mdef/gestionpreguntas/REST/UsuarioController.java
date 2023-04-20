@@ -32,7 +32,7 @@ public class UsuarioController {
 	}
     
     @GetMapping("{id}")
-	public EntityModel<Usuario> one(@PathVariable Long id) {
+	public UsuarioModel one(@PathVariable Long id) {
 		Usuario usuario = repositorio.findById(id)
 				.orElseThrow(() -> new RegisterNotFoundException(id, "usuario"));
 		log.info("Recuperado " + usuario);
@@ -40,24 +40,26 @@ public class UsuarioController {
 		return assembler.toModel(usuario);
 	}
     
+    @GetMapping
+	public CollectionModel<UsuarioListaModel> all() {
+		return listaAssembler.toCollection(repositorio.findAll());
+	}
+    
 	@PostMapping
-	public EntityModel<Usuario> add(@RequestBody UsuarioModel model) {
+	//public EntityModel<Usuario> add(@RequestBody UsuarioPostModel model) {
+	public UsuarioModel add(@RequestBody UsuarioPostModel model) {
 		Usuario usuario = repositorio.save(assembler.toEntity(model));
 		log.info("Añadido " + usuario);
 		return assembler.toModel(usuario);
 	}
 		
-    @GetMapping
-	public CollectionModel<UsuarioListaModel> all() {
-		return listaAssembler.toCollection(repositorio.findAll());
-	}
-
     @PutMapping("{id}")
-	public EntityModel<Usuario> edit(@PathVariable Long id, @RequestBody UsuarioModel model) {
+	//public EntityModel<Usuario> edit(@PathVariable Long id, @RequestBody UsuarioModel model) {
+    public UsuarioModel edit(@PathVariable Long id, @RequestBody UsuarioPutModel model) {
 		Usuario usuario = repositorio.findById(id).map(user -> {
 			user.setNombre(model.getNombre());
 			user.setUsername(model.getUsername());
-			user.setContraseña(model.getContraseña());
+			//user.setContraseña(model.getContraseña());
 			return repositorio.save(user);
 		})
 		.orElseThrow(() -> new RegisterNotFoundException(id, "usuario"));
@@ -71,5 +73,7 @@ public class UsuarioController {
 		log.info("Borrado pedido " + id);
 		repositorio.deleteById(id);
 	}
+    
+    
     
 }

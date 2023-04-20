@@ -11,6 +11,21 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="USUARIOS")
 public class Usuario {
+	public static enum Role {
+		administrador,
+		noAdministrador
+	}
+//	
+//	public static enum Tipo {
+//		alumno,
+//		docente,
+//		administración
+//	}
+//	public static enum Departamento {
+//		EMIES,
+//		CCESP
+//	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@JsonIgnore
@@ -18,6 +33,7 @@ public class Usuario {
 	private String nombre;
 	private String username;
 	private String contraseña;
+	private Role role;	
 	
 	public Long getId() {
 		return id;
@@ -44,10 +60,17 @@ public class Usuario {
 		this.contraseña = contraseña;
 	}
 	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", contraseña="
-				+ contraseña + "]";
+				+ contraseña + ", role=" + role + "]";
 	}
 
 }
