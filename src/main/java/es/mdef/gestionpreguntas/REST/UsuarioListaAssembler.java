@@ -11,7 +11,6 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import es.mdef.gestionpedidos.REST.PedidoController;
 import es.mdef.gestionpreguntas.entidades.Usuario;
 
 @Component

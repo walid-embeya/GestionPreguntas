@@ -2,6 +2,7 @@ package es.mdef.gestionpreguntas.REST;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,6 +64,12 @@ public class UsuarioController {
 		log.info("Actualizado " + usuario);
 		
 		return assembler.toModel(usuario);
+	}
+    
+    @DeleteMapping("{id}")
+	public void delete(@PathVariable Long id) {
+		log.info("Borrado pedido " + id);
+		repositorio.deleteById(id);
 	}
     
 }
