@@ -2,29 +2,27 @@ package es.mdef.gestionpreguntas.entidades;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="USUARIOS")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
+@DiscriminatorColumn(name="role_user", discriminatorType = DiscriminatorType.CHAR)
+@DiscriminatorValue("null")
 public class Usuario {
 	public static enum Role {
 		administrador,
 		noAdministrador
 	}
-//	
-//	public static enum Tipo {
-//		alumno,
-//		docente,
-//		administración
-//	}
-//	public static enum Departamento {
-//		EMIES,
-//		CCESP
-//	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,7 +31,7 @@ public class Usuario {
 	private String nombre;
 	private String username;
 	private String contraseña;
-	private Role role;	
+	//private Role role;	
 	
 	public Long getId() {
 		return id;
@@ -61,16 +59,17 @@ public class Usuario {
 	}
 	
 	public Role getRole() {
-		return role;
+		return null;
 	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
+	
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", contraseña="
-				+ contraseña + ", role=" + role + "]";
+				+ contraseña + "]";
 	}
 
 }
