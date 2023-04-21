@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 import es.mdef.gestionpreguntas.entidades.Usuario;
 
 @Component
-public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, UsuarioModel> {
+public class UsuarioPostAssembler implements RepresentationModelAssembler<Usuario, UsuarioPostModel> {
 
 	@Override
-	public UsuarioModel toModel(Usuario entity) {
+	public UsuarioPostModel toModel(Usuario entity) {
 		//UsuarioModel model = EntityModel.of(entity);
-		UsuarioModel model = new UsuarioModel();
+		UsuarioPostModel model = new UsuarioPostModel();
 		model.setNombre(entity.getNombre());
 		model.setUsername(entity.getUsername());
 		model.setContraseña(entity.getContraseña());
@@ -28,7 +28,7 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 		return model;
 	}
 
-	public Usuario toEntity(UsuarioModel model) {
+	public Usuario toEntity(UsuarioPostModel model) {
 		Usuario usuario = new Usuario();	
 		usuario.setNombre(model.getNombre());
 		usuario.setUsername(model.getUsername());

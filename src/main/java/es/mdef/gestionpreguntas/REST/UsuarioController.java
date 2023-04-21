@@ -22,12 +22,15 @@ public class UsuarioController {
 	private final UsuarioRepositorio repositorio;
 	private final UsuarioAssembler assembler;
     private final UsuarioListaAssembler listaAssembler;
+    private final UsuarioPostAssembler postAssembler;
     private final Logger log;
 	
-    UsuarioController(UsuarioRepositorio repositorio, UsuarioAssembler assembler, UsuarioListaAssembler listaAssembler) {
+    UsuarioController(UsuarioRepositorio repositorio, UsuarioAssembler assembler, UsuarioListaAssembler listaAssembler, 
+    		UsuarioPostAssembler postAssembler) {
 		this.repositorio = repositorio;
 		this.assembler = assembler;
 		this.listaAssembler = listaAssembler;
+		this.postAssembler = postAssembler;
 		log = (Logger) GestionpreguntasApplication.log;
 	}
     
@@ -48,7 +51,7 @@ public class UsuarioController {
 	@PostMapping
 	//public EntityModel<Usuario> add(@RequestBody UsuarioPostModel model) {
 	public UsuarioModel add(@RequestBody UsuarioPostModel model) {
-		Usuario usuario = repositorio.save(assembler.toEntity(model));
+		Usuario usuario = repositorio.save(postAssembler.toEntity(model));
 		log.info("Añadido " + usuario);
 		return assembler.toModel(usuario);
 	}
@@ -59,7 +62,8 @@ public class UsuarioController {
 		Usuario usuario = repositorio.findById(id).map(user -> {
 			user.setNombre(model.getNombre());
 			user.setUsername(model.getUsername());
-			//user.setContraseña(model.getContraseña());
+			user.setContraseña(model.getContraseña());
+			user.setRole(model.getRole());
 			return repositorio.save(user);
 		})
 		.orElseThrow(() -> new RegisterNotFoundException(id, "usuario"));
