@@ -11,6 +11,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
+import es.mdef.gestionpreguntas.entidades.Administrador;
+import es.mdef.gestionpreguntas.entidades.NoAdministrador;
 import es.mdef.gestionpreguntas.entidades.Usuario;
 
 @Component
@@ -20,8 +22,22 @@ public class UsuarioListaAssembler implements RepresentationModelAssembler<Usuar
 	public UsuarioListaModel toModel(Usuario entity) {
 		UsuarioListaModel model = new UsuarioListaModel();
 		model.setNombre(entity.getNombre());
-		//model.setUsername(entity.getUsername());
-		//model.setContraseña(entity.getContraseña());
+		
+		switch (entity.getRole()) {
+		case administrador: {
+			Administrador adm = (Administrador) entity;
+			model.setRole(adm.getRole());
+			break;
+		}
+		case noAdministrador: {
+			NoAdministrador noAdm = (NoAdministrador) entity;
+			model.setRole(noAdm.getRole());
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + entity.getRole());
+		}
+		
 		model.add(
 				linkTo(methodOn(UsuarioController.class).one(entity.getId())).withSelfRel()
 				);

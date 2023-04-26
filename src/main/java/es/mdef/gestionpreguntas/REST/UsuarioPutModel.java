@@ -3,14 +3,18 @@ package es.mdef.gestionpreguntas.REST;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
+import es.mdef.gestionpreguntas.entidades.NoAdministrador.Departamento;
+import es.mdef.gestionpreguntas.entidades.NoAdministrador.Tipo;
 import es.mdef.gestionpreguntas.entidades.Usuario.Role;
 
 @Relation(itemRelation="usuario")
 public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
 	private String nombre;
 	private String username;
-	private String contraseña;
-	private Role role;	
+	private String telefono;
+	private Tipo tipo;
+	private Departamento departamento;
+	private Role role;
 
 	public String getNombre() {
 		return nombre;
@@ -25,12 +29,28 @@ public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getContraseña() {
-		return contraseña;
+	
+	public String getTelefono() {
+		return telefono;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
+	
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+	
 	public Role getRole() {
 		return role;
 	}
@@ -40,7 +60,7 @@ public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
 	
 	@Override
 	public String toString() {
-		return "UsuarioModel [nombre=" + nombre + ", username=" + username + ", role=" + role + "]";
+		return "UsuarioPutModel [nombre=" + nombre + ", username=" + username + ", role=" + role + "]";
 	}
 
 }

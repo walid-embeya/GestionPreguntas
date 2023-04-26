@@ -1,6 +1,5 @@
 package es.mdef.gestionpreguntas.entidades;
 
-import es.mdef.gestionpreguntas.entidades.Usuario.Role;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 

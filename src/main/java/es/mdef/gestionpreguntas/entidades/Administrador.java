@@ -2,7 +2,6 @@ package es.mdef.gestionpreguntas.entidades;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import net.bytebuddy.implementation.bind.annotation.Super;
 
 @Entity
 @DiscriminatorValue("A")

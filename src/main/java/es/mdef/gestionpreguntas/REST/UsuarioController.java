@@ -1,7 +1,6 @@
 package es.mdef.gestionpreguntas.REST;
 
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -62,8 +61,6 @@ public class UsuarioController {
 		Usuario usuario = repositorio.findById(id).map(user -> {
 			user.setNombre(model.getNombre());
 			user.setUsername(model.getUsername());
-			user.setContraseña(model.getContraseña());
-			user.setRole(model.getRole());
 			return repositorio.save(user);
 		})
 		.orElseThrow(() -> new RegisterNotFoundException(id, "usuario"));

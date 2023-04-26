@@ -16,11 +16,11 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 	@Override
 	public UsuarioModel toModel(Usuario entity) {
 		UsuarioModel model = new UsuarioModel();
+		
 		switch (entity.getRole()) {
 		case administrador: {
 			Administrador adm = (Administrador) entity;
 			model.setTelefono(adm.getTelefono());
-
 			break;
 		}
 		case noAdministrador: {
@@ -69,15 +69,5 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 
 		return usuario;
 	}
-
-//	public Usuario toEntity(UsuarioPostModel model) {
-//		Usuario usuario = new Usuario();	
-//		usuario.setNombre(model.getNombre());
-//		usuario.setUsername(model.getUsername());
-//		usuario.setContraseña(model.getContraseña());
-//		usuario.setRole(model.getRole());
-//		
-//		return usuario;
-//	}
 
 }
