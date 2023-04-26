@@ -23,13 +23,6 @@ public class Administrador extends Usuario {
 
 	@Override
 	public String toString() {
-		return "Administrador [telefono=" + telefono + ", getRole()=" + getRole() + ", getNombre()=" + getNombre()
-				+ ", getUsername()=" + getUsername() + ", getContraseña()=" + getContraseña() + "]";
+		return "Administrador [Nombre = " + getNombre() + ", Username = " + getUsername() + ", telefono = " + telefono + "]";
 	}
-
-	
-	
-	//return super.toString() + "telefono=" + telefono + ", Role=" + getRole(); 
-	
-
 }

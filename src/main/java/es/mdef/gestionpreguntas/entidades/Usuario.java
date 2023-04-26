@@ -62,9 +62,9 @@ public class Usuario {
 		return null;
 	}
 	
-//	public void setRole(Role role) {
-//		this.role = role;
-//	}
+	//	public void setRole(Role role) {
+	//		this.role = role;
+	//	}
 	
 	@Override
 	public String toString() {

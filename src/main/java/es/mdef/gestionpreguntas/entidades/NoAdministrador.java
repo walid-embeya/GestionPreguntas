@@ -41,8 +41,7 @@ public class NoAdministrador extends Usuario {
 	
 	@Override
 	public String toString() {
-		return "NoAdministrador [tipo=" + tipo + ", departamento=" + departamento + ", getNombre()=" + getNombre()
-				+ ", getUsername()=" + getUsername() + ", getRole()=" + getRole() + "]";
+		return "NoAdministrador [Nombre = " + getNombre() + ", Username = " + getUsername() + ", Tipo = " + tipo + ", departamento=" + departamento + "]";
 	}
 	
 
