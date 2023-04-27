@@ -19,6 +19,8 @@ public class Administrador extends Usuario {
 	public Role getRole() {
 		return Role.administrador;
 	}
+	
+	
 
 	@Override
 	public String toString() {

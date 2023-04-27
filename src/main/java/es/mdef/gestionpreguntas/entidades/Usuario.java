@@ -1,6 +1,9 @@
 package es.mdef.gestionpreguntas.entidades;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -11,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +22,7 @@ import jakarta.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
 @DiscriminatorColumn(name="role_user", discriminatorType = DiscriminatorType.CHAR)
 @DiscriminatorValue("null")
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class Usuario {
 	public static enum Role {
 		administrador,
@@ -31,7 +36,8 @@ public class Usuario {
 	private String nombre;
 	private String username;
 	private String contraseña;
-	//private Role role;	
+	@OneToMany(mappedBy = "usuario")
+	List<Pregunta> preguntas;
 	
 	public Long getId() {
 		return id;
@@ -62,9 +68,6 @@ public class Usuario {
 		return null;
 	}
 	
-	//	public void setRole(Role role) {
-	//		this.role = role;
-	//	}
 	
 	@Override
 	public String toString() {

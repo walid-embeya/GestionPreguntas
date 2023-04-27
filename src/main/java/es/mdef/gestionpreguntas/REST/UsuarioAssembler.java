@@ -21,12 +21,14 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 		case administrador: {
 			Administrador adm = (Administrador) entity;
 			model.setTelefono(adm.getTelefono());
+			model.setRole(entity.getRole());
 			break;
 		}
 		case noAdministrador: {
 			NoAdministrador noAdm = (NoAdministrador) entity;
 			model.setTipo(noAdm.getTipo());
 			model.setDepartamento(noAdm.getDepartamento());
+			model.setRole(entity.getRole());
 			break;
 		}
 		default:
@@ -35,7 +37,7 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 
 		model.setNombre(entity.getNombre());
 		model.setUsername(entity.getUsername());
-		model.setRole(entity.getRole());
+		
 
 		model.add(linkTo(methodOn(UsuarioController.class).one(entity.getId())).withSelfRel());
 
