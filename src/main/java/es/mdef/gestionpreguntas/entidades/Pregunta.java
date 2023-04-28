@@ -23,7 +23,10 @@ public class Pregunta {
 	@JoinColumn(name="UsuarioId")
 	private Usuario usuario;
 	
-	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="FamiliaId")
+	private Familia familia;
+		
 	public Long getId() {
 		return id;
 	}

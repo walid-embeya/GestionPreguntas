@@ -64,6 +64,14 @@ public class Usuario {
 		this.contraseña = contraseña;
 	}
 	
+	
+	
+	public List<Pregunta> getPreguntas() {
+		return preguntas;
+	}
+	public void setPreguntas(List<Pregunta> preguntas) {
+		this.preguntas = preguntas;
+	}
 	public Role getRole() {
 		return null;
 	}

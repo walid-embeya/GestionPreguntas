@@ -2,9 +2,11 @@ package es.mdef.gestionpreguntas.REST;
 
 import org.slf4j.Logger;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,13 +48,6 @@ public class PreguntaController {
 		return listaAssembler.toCollection(repositorio.findAll());
 	}
 	
-//	@GetMapping("porEstado")
-//	public CollectionModel<PedidoListaModel> pedidosPorEstado(@RequestParam PedidoEstado estado) {
-//		return listaAssembler.toCollection(
-//				repositorio.findPedidoByEstado(estado)
-//				);
-//	}
-	
 	@PostMapping
 	public PreguntaModel add(@RequestBody PreguntaPostModel model) {
 		Pregunta pregunta = repositorio.save(postAssembler.toEntity(model));
@@ -60,24 +55,21 @@ public class PreguntaController {
 		return assembler.toModel(pregunta);
 	}
 	
-//	@PutMapping("{id}")
-//	public EntityModel<Pedido> edit(@PathVariable Long id, @RequestBody PedidoModel model) {
-//		Pedido pedido = repositorio.findById(id).map(ped -> {
-//			ped.setDescripcion(model.getDescripcion());
-//			ped.setEstado(model.getEstado());
-//			return repositorio.save(ped);
-//		})
-//		.orElseThrow(() -> new RegisterNotFoundException(id, "pedido"));
-//		log.info("Actualizado " + pedido);
-//		return assembler.toModel(pedido);
-//	}
-//	
-//	@DeleteMapping("{id}")
-//	public void delete(@PathVariable Long id) {
-//		log.info("Borrado pedido " + id);
-//		repositorio.deleteById(id);
-//	}
-//	
+	 @PutMapping("{id}")
+	public PreguntaModel edit(@PathVariable Long id, @RequestBody PreguntaPostModel model) {
+		 Pregunta pregunta = repositorio.findById(id).map(preg -> {
+			preg.setEnunciado(model.getEnunciado());
+			preg.setUsuario(model.getUsuario());
+			return repositorio.save(preg);
+		})
+		.orElseThrow(() -> new RegisterNotFoundException(id, "pregunta"));
+		log.info("Actualizado " + pregunta);
+		return assembler.toModel(pregunta);
+	}
 	
-	
+	   @DeleteMapping("{id}")
+		public void delete(@PathVariable Long id) {
+			log.info("Borrado pregunta " + id);
+			repositorio.deleteById(id);
+		}
 }

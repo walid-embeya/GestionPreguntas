@@ -30,7 +30,7 @@ public class PreguntaListaAssembler implements RepresentationModelAssembler<Preg
 				lista.stream().map(this::toModel).collect(Collectors.toList())
 				);
 		collection.add(
-				linkTo(methodOn(PreguntaController.class).all()).withRel("pedidos")
+				linkTo(methodOn(PreguntaController.class).all()).withRel("preguntas")
 				);
 		return collection;
 	}

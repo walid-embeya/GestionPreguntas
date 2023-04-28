@@ -3,7 +3,7 @@ package es.mdef.gestionpreguntas.REST;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
-@Relation(collectionRelation = "pedidos")
+@Relation(collectionRelation = "preguntas")
 public class PreguntaListaModel extends RepresentationModel<PreguntaListaModel> {
 	private String enunciado;
 	

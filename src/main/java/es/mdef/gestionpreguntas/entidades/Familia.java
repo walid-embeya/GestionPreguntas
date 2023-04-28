@@ -1,20 +1,24 @@
 package es.mdef.gestionpreguntas.entidades;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="FAMILIAS")
-public class Familia {
+public class Familia extends es.mdef.support.Familia{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String enunciado;
+	
+	@OneToMany(mappedBy = "familia")
+	List<Pregunta> preguntas;
 
 	public Long getId() {
 		return id;
@@ -23,11 +27,11 @@ public class Familia {
 		this.id = id;
 	}
 	
-	public String getEnunciado() {
-		return enunciado;
+	public List<Pregunta> getPreguntas() {
+		return preguntas;
 	}
-	public void setEnunciado(String enunciado) {
-		this.enunciado = enunciado;
+	public void setPreguntas(List<Pregunta> preguntas) {
+		this.preguntas = preguntas;
 	}
 	
 	
