@@ -64,8 +64,6 @@ public class Usuario {
 		this.contraseña = contraseña;
 	}
 	
-	
-	
 	public List<Pregunta> getPreguntas() {
 		return preguntas;
 	}

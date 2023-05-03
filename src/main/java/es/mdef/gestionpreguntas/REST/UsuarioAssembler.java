@@ -35,7 +35,7 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 			throw new IllegalArgumentException("Unexpected value: " + entity.getRole());
 		}
 
-		model.setNombre("jjj" + entity.getNombre());
+		model.setNombre("Mr " + entity.getNombre());
 		model.setUsername(entity.getUsername());
 		
 

@@ -55,7 +55,7 @@ public class PreguntaController {
 		return assembler.toModel(pregunta);
 	}
 	
-	 @PutMapping("{id}")
+	@PutMapping("{id}")
 	public PreguntaModel edit(@PathVariable Long id, @RequestBody PreguntaPostModel model) {
 		 Pregunta pregunta = repositorio.findById(id).map(preg -> {
 			preg.setEnunciado(model.getEnunciado());
@@ -67,9 +67,9 @@ public class PreguntaController {
 		return assembler.toModel(pregunta);
 	}
 	
-	   @DeleteMapping("{id}")
-		public void delete(@PathVariable Long id) {
-			log.info("Borrado pregunta " + id);
-			repositorio.deleteById(id);
-		}
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable Long id) {
+		log.info("Borrado pregunta " + id);
+		repositorio.deleteById(id);
+	}
 }

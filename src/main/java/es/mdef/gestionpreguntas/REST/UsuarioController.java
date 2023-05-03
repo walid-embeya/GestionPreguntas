@@ -28,7 +28,6 @@ import es.mdef.gestionpreguntas.repositorios.UsuarioRepositorio;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 	private final UsuarioRepositorio repositorio;
-
 	private final UsuarioAssembler assembler;
     private final UsuarioListaAssembler listaAssembler;
     private final UsuarioPostAssembler postAssembler;
