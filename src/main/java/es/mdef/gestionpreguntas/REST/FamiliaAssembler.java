@@ -20,7 +20,8 @@ public class FamiliaAssembler implements RepresentationModelAssembler<Familia, F
 		model.setTamano(entity.getTamano());
 		
 		model.add(linkTo(methodOn(FamiliaController.class).one(entity.getId())).withSelfRel() );
-
+		model.add(linkTo(methodOn(FamiliaController.class).preguntas(entity.getId())).withRel("ListaPreguntas"));
+		
 		return model;
 	}
 	

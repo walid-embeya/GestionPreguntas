@@ -36,8 +36,9 @@ public class Familia extends es.mdef.support.Familia {
 	}
 	
 	public Long getTamano() {
-		return (long) getPreguntas().size();
+		return (long) ((getPreguntas() == null) ? 0 : getPreguntas().size()); 
 	}
+	
 	@Override
 	public String toString() {
 		return "Familia [id = " + id + ", Enunciado = " + getEnunciado() + ", Tamano = " + getTamano() + " preguntas" + "]";

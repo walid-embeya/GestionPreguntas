@@ -40,6 +40,7 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 		
 
 		model.add(linkTo(methodOn(UsuarioController.class).one(entity.getId())).withSelfRel());
+		model.add(linkTo(methodOn(UsuarioController.class).preguntas(entity.getId())).withRel("ListaPreguntas"));
 
 		return model;
 	}

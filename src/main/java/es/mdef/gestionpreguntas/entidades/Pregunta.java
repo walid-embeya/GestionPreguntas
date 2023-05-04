@@ -40,6 +40,13 @@ public class Pregunta {
 	public void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
 	}
+		
+	public Familia getFamilia() {
+		return familia;
+	}
+	public void setFamilia(Familia familia) {
+		this.familia = familia;
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;
