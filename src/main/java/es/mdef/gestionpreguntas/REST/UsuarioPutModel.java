@@ -6,6 +6,7 @@ import org.springframework.hateoas.server.core.Relation;
 import es.mdef.gestionpreguntas.entidades.NoAdministrador.Departamento;
 import es.mdef.gestionpreguntas.entidades.NoAdministrador.Tipo;
 import es.mdef.gestionpreguntas.entidades.Usuario.Role;
+import jakarta.persistence.Column;
 
 @Relation(itemRelation="usuario")
 public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
@@ -15,6 +16,16 @@ public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
 	private Tipo tipo;
 	private Departamento departamento;
 	private Role role;
+	
+	@Column(name="cuenta_activa")
+	private boolean accountNonExpired = true;
+	@Column(name="cuenta_desbloqueada")
+	private boolean accountNonLocked = true;
+	@Column(name="credenciales_activas")
+	private boolean credentialsNonExpired = true;
+	@Column(name="habilitada")
+	private boolean enabled = true;
+	
 
 	public String getNombre() {
 		return nombre;
@@ -58,6 +69,30 @@ public class UsuarioPutModel extends RepresentationModel<UsuarioPutModel> {
 		this.role = role;
 	}
 	
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
+	}
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 	@Override
 	public String toString() {
 		return "UsuarioPutModel [nombre=" + nombre + ", username=" + username + ", role=" + role + "]";

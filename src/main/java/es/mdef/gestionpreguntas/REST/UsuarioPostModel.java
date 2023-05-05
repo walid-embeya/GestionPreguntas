@@ -11,7 +11,7 @@ import es.mdef.gestionpreguntas.entidades.Usuario.Role;
 public class UsuarioPostModel extends RepresentationModel<UsuarioPostModel> {
 	private String nombre;
 	private String username;
-	private String contraseña;
+	private String password;
 	private String telefono;
 	private Tipo tipo;
 	private Departamento departamento;
@@ -30,12 +30,12 @@ public class UsuarioPostModel extends RepresentationModel<UsuarioPostModel> {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	public String getContraseña() {
-		return contraseña;
+		
+	public String getPassword() {
+		return password;
 	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public String getTelefono() {

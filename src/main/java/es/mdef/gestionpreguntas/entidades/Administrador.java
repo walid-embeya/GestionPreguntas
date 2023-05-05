@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 @Entity
 @DiscriminatorValue("A")
 public class Administrador extends Usuario {
+	private static final long serialVersionUID = 1L;
 	private String telefono;
 
 	public String getTelefono() {
@@ -19,8 +20,6 @@ public class Administrador extends Usuario {
 	public Role getRole() {
 		return Role.administrador;
 	}
-	
-	
 
 	@Override
 	public String toString() {

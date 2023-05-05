@@ -19,7 +19,7 @@ public class UsuarioPostAssembler implements RepresentationModelAssembler<Usuari
 		UsuarioPostModel model = new UsuarioPostModel();
 		model.setNombre(entity.getNombre());
 		model.setUsername(entity.getUsername());
-		model.setContraseña(entity.getContraseña());
+		model.setPassword(entity.getPassword());
 		model.setRole(entity.getRole());
 	
 		switch (entity.getRole()) {

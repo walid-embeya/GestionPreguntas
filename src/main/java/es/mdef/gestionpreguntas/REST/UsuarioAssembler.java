@@ -16,7 +16,7 @@ public class UsuarioAssembler implements RepresentationModelAssembler<Usuario, U
 	@Override
 	public UsuarioModel toModel(Usuario entity) {
 		UsuarioModel model = new UsuarioModel();
-		
+		//entity.setPassword(null);
 		switch (entity.getRole()) {
 		case administrador: {
 			Administrador adm = (Administrador) entity;
