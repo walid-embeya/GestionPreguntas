@@ -1,12 +1,10 @@
 package es.mdef.gestionpreguntas.entidades;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
 
-@Entity
-@DiscriminatorValue("N")
 public class NoAdministrador extends Usuario {
 
+	private static final long serialVersionUID = 1L;
+	
 	public static enum Tipo {
 		alumno,
 		docente,

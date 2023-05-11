@@ -9,30 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name="USUARIOS")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name="role_user", discriminatorType = DiscriminatorType.CHAR)
-@DiscriminatorValue("null")
-@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+
 public class Usuario implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	public static enum Role {
@@ -40,27 +20,19 @@ public class Usuario implements UserDetails {
 		noAdministrador
 	}
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@JsonIgnore
 	private Long id;
 	private String nombre;
-	@NotBlank(message="username es un campo obligatorio de la clase empleado")
-	@Column(unique=true)
 	private String username;
-	@NotBlank(message="contraseña es un campo obligatorio de la clase empleado")
 	private String password;
-	@OneToMany(mappedBy = "usuario")
 	List<Pregunta> preguntas;
 	
-	@Column(name="cuenta_activa")
+	
+	
 	private boolean accountNonExpired = true;
-	@Column(name="cuenta_desbloqueada")
 	private boolean accountNonLocked = true;
-	@Column(name="credenciales_activas")
 	private boolean credentialsNonExpired = true;
-	@Column(name="habilitada")
 	private boolean enabled = true;
+	
 	
 	public Long getId() {
 		return id;

@@ -1,10 +1,6 @@
 package es.mdef.gestionpreguntas.entidades;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
 
-@Entity
-@DiscriminatorValue("A")
 public class Administrador extends Usuario {
 	private static final long serialVersionUID = 1L;
 	private String telefono;

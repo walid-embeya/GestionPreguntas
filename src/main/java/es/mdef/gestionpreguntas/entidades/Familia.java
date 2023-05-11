@@ -9,16 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name="FAMILIAS")
 public class Familia extends es.mdef.support.Familia {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private Long id;
 	
-	//private String enunciado;     ///// se hereda de la clase FamiliaImpl
-	
-	@OneToMany(mappedBy = "familia")
 	List<Pregunta> preguntas;
 
 	public Long getId() {
