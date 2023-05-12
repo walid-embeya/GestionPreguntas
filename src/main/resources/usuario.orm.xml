@@ -20,6 +20,23 @@
 			
             <basic name="password" optional="false"/>
             
+            
+            <basic name="accountNonExpired" optional="false">
+				<column name="cuenta_activa"/>
+			</basic>
+			
+			<basic name="accountNonLocked" optional="false">
+				<column name="cuenta_desbloqueada"/>
+			</basic>
+			
+			<basic name="credentialsNonExpired" optional="false">
+				<column name="credenciales_activas" unique="true"/>
+			</basic>
+            
+            <basic name="enabled" optional="false">
+				<column name="habilitada"/>
+			</basic>
+			
             <one-to-many name="preguntas" mapped-by="usuario"/>
         </attributes>
      </entity>
